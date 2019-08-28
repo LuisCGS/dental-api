@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.dental.exception.GenericoException;
@@ -17,6 +18,18 @@ import br.com.dental.model.Usuario;
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
+	
+	@RequestMapping(value="/teste", method=RequestMethod.GET)
+	public String teste() throws ValidacaoException, GenericoException {
+		try {
+			
+			return "Olá mundo";
+		} catch (ValidacaoException e) {
+			throw e;
+		} catch (Exception e) {
+			throw new GenericoException();
+		}
+	}
 	
 	/**
 	 * Metodos responsavel por salvar uma {@link Usuario} 

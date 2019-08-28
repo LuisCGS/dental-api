@@ -26,23 +26,23 @@ public class ConfiguradorDeSegurancaWeb extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests()
-				.antMatchers("/").permitAll()
-				.antMatchers(HttpMethod.POST, "/login").permitAll()
-				.anyRequest().authenticated()
-				.and()
-				.addFilterBefore(new JWTFiltroLogin("/login", authenticationManager()), UsernamePasswordAuthenticationFilter.class)
-				.addFilterBefore(new JWTFiltroAutenticacao(), UsernamePasswordAuthenticationFilter.class);
+//		http.csrf().disable().authorizeRequests()
+//				.antMatchers("/").permitAll()
+//				.antMatchers(HttpMethod.POST, "/login").permitAll()
+//				.anyRequest().authenticated()
+//				.and()
+//				.addFilterBefore(new JWTFiltroLogin("/login", authenticationManager()), UsernamePasswordAuthenticationFilter.class)
+//				.addFilterBefore(new JWTFiltroAutenticacao(), UsernamePasswordAuthenticationFilter.class);
 
 	}
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		for(Usuario usuario : usuarioRepository.findAll()) {
-			auth.inMemoryAuthentication()
-				.withUser(usuario.getLogin())
-				.password(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode(usuario.getSenha()))
-				.roles(usuario.getListaPerfil().stream().map(PerfilEnum::name).toArray(String[]::new));
-		}
+//		for(Usuario usuario : usuarioRepository.findAll()) {
+//			auth.inMemoryAuthentication()
+//				.withUser(usuario.getLogin())
+//				.password(PasswordEncoderFactories.createDelegatingPasswordEncoder().encode(usuario.getSenha()))
+//				.roles(usuario.getListaPerfil().stream().map(PerfilEnum::name).toArray(String[]::new));
+//		}
 	}
 }
